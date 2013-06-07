@@ -7,13 +7,14 @@ describe "Static pages" do
   describe "Home page" do
     before { visit root_path }
 
-    it { should have_selector('h1',    text: 'Starter App') }
-    it { should have_selector('title', text: full_title('')) }
-    it { should_not have_selector 'title', text: '| Home' }
-    it { should_not have_selector 'h2', text: 'sample app' }
-    it { should have_selector 'h2', text: 'starter app' }
-    it { should have_selector 'h2', text: 'extending' }
-    it { should have_selector 'footer', text: 'Extending' }
+    it { should have_selector('h1',         text: 'Goals Tracker App') }
+    it { should have_selector('title',      text: full_title('')) }
+    it { should_not have_selector 'title',  text: '| Home' }
+    it { should_not have_selector 'h2',     text: 'sample app' }
+    it { should_not have_selector 'h2',     text: 'starter app' }
+    it { should have_selector 'h2',         text: 'goals tracker' }
+    it { should have_selector 'h2',         text: 'extending' }
+    it { should have_selector 'footer',     text: 'Extending' }
     it { should_not have_selector 'footer', text: 'News' }
 
     describe "for signed-in users" do
@@ -49,9 +50,11 @@ describe "Static pages" do
 
     it { should have_selector('h1',    text: 'Help') }
     it { should have_selector('title', text: full_title('Help')) }
-    it { should have_selector('p',     text: 'starter') }
-    it { should have_selector('p',     text: 'original sample') }
+    it { should_not have_selector('p', text: 'starter') }
+    it { should_not have_selector('p', text: 'original sample') }
+    it { should have_selector('p',     text: 'goals-tracking') }
     it { should have_selector('p',     text: 'no specific help yet') }
+    it { should have_selector('p',     text: 'goals.tracker [at] intuedge.net') }
   end
 
   describe "About page" do
@@ -59,9 +62,10 @@ describe "Static pages" do
 
     it { should have_selector('h1',    text: 'About') }
     it { should have_selector('title', text: full_title('About Us')) }
-    it { should have_selector('p',     text: 'starter') }
+    it { should_not have_selector('p', text: 'starter') }
+    it { should have_selector('p',     text: 'goals-tracking') }
     it { should have_selector('p',     text: 'original sample') }
-    it { should have_selector('a',     text: 'RailsBridge.org') }
+    it { should_not have_selector('a', text: 'RailsBridge.org') }
     it { should have_selector('a',     text: 'license information') }
   end
 
@@ -70,9 +74,10 @@ describe "Static pages" do
 
     it { should have_selector('h1',    text: 'Contact') }
     it { should have_selector('title', text: full_title('Contact')) }
-    it { should have_selector('p',     text: 'starter') }
-    it { should have_selector('p',     text: 'original sample') }
-    it { should have_selector('p',     text: 'starter.app [at] intuedge.net') }
+    it { should_not have_selector('p', text: 'starter') }
+    it { should_not have_selector('p', text: 'original sample') }
+    it { should_not have_selector('p', text: 'starter.app [at] intuedge.net') }
+    it { should have_selector('p',     text: 'goals.tracker [at] intuedge.net') }
     it { should have_selector('p',     text: 'no formal contact yet') }
 	end
 
@@ -81,8 +86,9 @@ describe "Static pages" do
 
     it { should have_selector('h1',    text: 'License Information') }
     it { should have_selector('title', text: full_title('Licensing')) }
-    it { should have_selector('p',     text: 'starter') }
+    it { should_not have_selector('p', text: 'starter') }
     it { should have_selector('p',     text: 'original sample') }
+    it { should have_selector('p',     text: 'goals-tracking') }
     it { should have_selector('p',     text: 'MIT License') }
     it { should have_selector('p',     text: 'Beerware License') }
   end
@@ -100,7 +106,7 @@ describe "Static pages" do
     click_link "Home"
     click_link "Sign up now!"
     page.should have_selector 'title', text: full_title('Sign up')
-    click_link "starter app"
-    page.should have_selector 'h1', text: 'Starter App'
+    click_link "goals tracker"
+    page.should have_selector 'h1', text: 'Goals Tracker'
   end
 end
